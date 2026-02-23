@@ -60,31 +60,62 @@ Flutter App
 
 ---
 
-## 🔄 Luồng hoạt động
+## 🔄 Luồng hoạt động hệ thống
 
-### 1️⃣ Gửi dữ liệu sức khỏe
+---
 
-ESP32 gửi:
+### 📡 1. ESP32 gửi dữ liệu sức khỏe
+
 ```bash
 POST /api/v1/esp/devices/{device_id}/readings
-Flutter lấy dữ liệu:
-GET /api/v1/users/{user_id}/latest2️⃣ Đo ECG theo yêu cầu
+```
 
-Flutter gửi yêu cầu:
+---
 
+### 📱 2. Flutter lấy dữ liệu
+
+```bash
+GET /api/v1/users/{user_id}/latest
+```
+
+---
+
+### ❤️ 3. Đo ECG theo yêu cầu
+
+#### Bước 1 – Flutter gửi yêu cầu
+
+```bash
 POST /api/v1/devices/{device_id}/ecg/request
+```
 
-ESP nhận lệnh:
+#### Bước 2 – ESP nhận lệnh
 
+```bash
 GET /api/v1/esp/devices/{device_id}/commands/next
+```
 
-ESP gửi dữ liệu ECG:
+#### Bước 3 – ESP gửi dữ liệu ECG
 
+```bash
 POST /api/v1/esp/devices/{device_id}/readings
-🚀 Hướng dẫn chạy
-Backend
+```
+
+---
+
+## 🚀 Hướng dẫn chạy
+
+### 🖥 Backend
+
+```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
-Flutter
+```
+
+---
+
+### 📱 Flutter
+
+```bash
 flutter pub get
 flutter run
+```
